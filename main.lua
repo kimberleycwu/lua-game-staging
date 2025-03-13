@@ -263,6 +263,9 @@ end
 
 -- ===== MOUSE_PRESSED ====================
 function love.mousepressed(x, y, button, istouch, presses)
+    if game.state == 'win' then -- locks grid once pipes solved
+        return
+    end
     if button == 1 then
         for _, pipe in ipairs(game.pipes) do
             local imgWidth = pipe.image:getWidth() * img_scale
